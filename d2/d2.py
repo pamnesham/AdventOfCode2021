@@ -6,14 +6,15 @@ def calc_position(horizontal, depth):
 
 # calculate aim (aim added in challenge 2)
 def calc_aim(direction, x, current_aim):
-    if direction == "up":
-        new_aim = current_aim - x
-        return (0, new_aim)
-    elif direction == "down":
-        new_aim = current_aim + x
-        return (0, new_aim)
-    else:
-        return "error"
+    try:
+        if direction == "up":
+            new_aim = current_aim - x
+            return (0, new_aim)
+        else: # direction = down
+            new_aim = current_aim + x
+            return (0, new_aim)
+    except:
+        print("Recieved an unexpected value.")
 
 
 # calculate horizontal 
