@@ -45,27 +45,27 @@ def convert_to_decimal(binary):
 
 def main():
     with open("input.txt") as f:
-        bits = [bit.strip() for bit in f.readlines()]
-    o_bits = bits
+        oxygen_bits = [bit.strip() for bit in f.readlines()]
+    c02_bits = oxygen_bits
     
     # Get oxygen generator rating
     index = 0
-    while len(o_bits) > 1:
-        bit_counts = get_bit_counts(o_bits) #tally 1s and 0s
+    while len(oxygen_bits) > 1:
+        bit_counts = get_bit_counts(oxygen_bits) #tally 1s and 0s
         lead_bit = get_lead_bit_O(bit_counts, index) # are there more 1s or 0s?
-        o_bits = get_list_w_lead_bit(o_bits, lead_bit, index) # create new list with only values starting with either 1 or 0s
+        oxygen_bits = get_list_w_lead_bit(oxygen_bits, lead_bit, index) # create new list with only values starting with either 1 or 0s
         index+=1
 
     # Get CO2 scrubber rating
     index = 0
-    while len(bits) > 1:
-        bit_counts = get_bit_counts(bits) #tally 1s and 0s
+    while len(c02_bits) > 1:
+        bit_counts = get_bit_counts(c02_bits) #tally 1s and 0s
         lead_bit = get_lead_bit_c02(bit_counts, index) # are there more 1s or 0s?
-        bits = get_list_w_lead_bit(bits, lead_bit, index) # create new list with only values starting with either 1 or 0s      
+        c02_bits = get_list_w_lead_bit(c02_bits, lead_bit, index) # create new list with only values starting with either 1 or 0s      
         index+=1  
 
-    oxy_gen = convert_to_decimal(o_bits[0])
-    c02_scrub = convert_to_decimal(bits[0])
+    oxy_gen = convert_to_decimal(oxygen_bits[0])
+    c02_scrub = convert_to_decimal(c02_bits[0])
     life_support = oxy_gen * c02_scrub
     print(life_support)
 
